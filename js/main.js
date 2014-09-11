@@ -1,7 +1,8 @@
 console.log("nihao");
 
 $(document).ready(function() {
-  $('.row1').on('sumbmit', '.infor', function(){
+  $('.diin').on('sumbmit', '.infor', function(event){
+  	event.preventDefault();
     var ditxt = $(this).val();
     $('.row1').append(ditxt);
   })
