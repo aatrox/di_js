@@ -9,20 +9,42 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4">	
-				<h1 class="red"> TODO list </h1>
+			<div class="col-md-6 col-md-offset-3">	
+				<h1> TODO list </h1>
 			</div>
 		</div>
 
-	
+	  <div class="row1">
+			<div class="col-md-6 col-md-offset-3">
+			  <header id="header">
+			    <form  class="diin">
+				    <input type="text" class="diinput" placeholder="what are you planning to do?">
+			    </form>
+			  </header>
 
-		<div class="row1">
-			<div class="col-md-4 col-md-offset-4">
-			  <form  class="diin">
-				  <input type="text" class="diinput" placeholder="what are you planning to do?">
-			  </form>
-        <ul id="todo-list">
-        </ul>
+			  <section id="main">
+          <ul id="todo-list">
+          </ul>
+        </section>
+
+        <footer class="row" id="footer">
+        	<div class="col-md-3">
+	        	<span>item left </span>
+	        </div>
+
+	        <div class="col-md-4">
+	        	<ul>
+	        		<li>all</li>
+	        		<li>target</li>
+	        		<li>done</li>
+	        	</ul>
+	        </div>
+
+	        <div class="col-md-3 col-md-offset-2">
+	        	<button>clear done</button>
+	        </div>
+
+        </footer>
       </div>
 		</div>
 	</div>
