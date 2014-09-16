@@ -6,15 +6,20 @@ h1 {
 	margin-bottom: 20px;
 }
 
+
+
 #main ul {
 	list-style-type: none;
 	padding-left: 0px;
+
+
 }
 
 #main li {
 	border: 1px dotted #333333;
 	height: 58px;
 	font-size: 150%;
+	line-height: 58px;
 }
 
 .fa.fa-bullseye{
@@ -28,8 +33,10 @@ h1 {
 
 .fa.fa-close{
 	float: right;
-	margin-top: 3px;
+	line-height: 58px;
 	display: none;
+	margin-right: 10px;
+
 }
 
 .diinput{
@@ -46,4 +53,8 @@ h1 {
 #footer ul li{
 	display: inline;
 	padding-right: 5px;
+}
+
+.strong{
+	font-weight: 900;
 }
