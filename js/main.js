@@ -31,11 +31,11 @@ $(document).ready(function() {
     for (var k=0; k<todoCounter; k++){
       var dielement;
       if(diObject.dataLabel[k] == 't'){
-        dielement = $('<li><i class="fa fa-bullseye fa-lg"></i></li>');
+        dielement = $('<li><i class="fa fa-bullseye fa-lg"></i><span></span></li>');
       }else{
-        dielement = $('<li><i class="fa fa-check fa-lg"></i></li>');
+        dielement = $('<li><i class="fa fa-check fa-lg"></i><span></span></li>');
       }
-        dielement.append(diObject.dataText[k]);
+        dielement.find('span').append(diObject.dataText[k]);
         dielement.append('<i class="fa fa-close fa-lg"></i>');
         $('#todo-list').append(dielement);
     }
@@ -47,8 +47,8 @@ $(document).ready(function() {
   $('.diin').on('submit', function(event){
   	event.preventDefault();
     var ditxt = $(this).find('.diinput').val();
-    var element = $('<li><i class="fa fa-bullseye fa-lg"></i></li>');
-    element.append(ditxt);
+    var element = $('<li><i class="fa fa-bullseye fa-lg"></i><span></span></li>');
+    element.find('span').append(ditxt);
     element.append('<i class="fa fa-close fa-lg"></i>');
     $('#todo-list').append(element);
     $('.diin input').val("");
@@ -59,8 +59,10 @@ $(document).ready(function() {
   $('#main ul').on("click", "li i", function(){
   	if($(this).hasClass('fa fa-bullseye fa-lg')){
   		$(this).removeClass('fa fa-bullseye fa-lg').addClass('fa fa-check fa-lg');
+      $(this).siblings('span').addClass('didcr');
   	} else{
   		$(this).removeClass('fa fa-check fa-lg').addClass('fa fa-bullseye fa-lg');
+      $(this).siblings('span').removeClass('didcr');
   	}	
   	updateItemStatus();
     updateFooterStatus();
@@ -136,14 +138,14 @@ $(document).ready(function() {
   //   $(this).html(revise);
   // })
 
-  // $('.inplace').editable(function(value, settings) {  
-  //    return(value);
-  //  }, { 
-  //     event: 'dblclick',
-  //     type: 'text',
-  //     width: '540px',
-  //     height: '58px'
-  //  });
+  $('.inplace').editable(function(value, settings) {  
+     return(value);
+   }, { 
+      event: 'dblclick',
+      type: 'text',
+      width: '540px',
+      height: '58px'
+   });
 
 
 });

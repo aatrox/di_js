@@ -29,7 +29,10 @@ h1 {
 	height: 58px;
 	font-size: 150%;
 	line-height: 58px;
+}
 
+#main li .didcr{
+	text-decoration: line-through;
 }
 
 .fa.fa-bullseye{
