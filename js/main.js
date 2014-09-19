@@ -4,11 +4,10 @@ var updateFooterStatus = function() {
   if ($("#todo-list").size() > 0){
     $('#footer').show();
     var c = $('#main li .fa-check').size();
-    console.log(c)
     if (c>0){
       $('#footer #clear').show();
       $('#footer #clear').text("clear done(" + c + ")");
-    }else{
+    } else {
       $('#footer #clear').hide();
     }
   }   
@@ -17,35 +16,28 @@ var updateFooterStatus = function() {
   }
 }
 
-var updateItemStatus = function(){
+var updateItemStatus = function() {
     todoCounter = $('#todo-list li').size();
     var i = $('#main li .fa-bullseye').size();
     $('#items').text(i + ' item(s) left');
 }
 
-
-
 $(document).ready(function() {
-  
   var retrievedObject = localStorage.getItem('diData');
   var diObject = JSON.parse(retrievedObject);
-  if ( diObject.dateLabel && diObject.dataLabel.size > 0 ) {
-    console.log(diObject);
-    todoCounter = diObject.dataText.size();
-    var dielement;
+  if ( diObject!=null ) {
+    todoCounter = diObject.dataText.length;
+    
     for (var k=0; k<todoCounter; k++){
-      if(diObject.label[k] == 't'){
+      var dielement;
+      if(diObject.dataLabel[k] == 't'){
         dielement = $('<li><i class="fa fa-bullseye fa-lg"></i></li>');
-        dielement.append(diObject.dataText[k]);
-        dielement.append('<i class="fa fa-close fa-lg"></i>');
-        $('#todo-list').append(dielement);
       }else{
         dielement = $('<li><i class="fa fa-check fa-lg"></i></li>');
+      }
         dielement.append(diObject.dataText[k]);
         dielement.append('<i class="fa fa-close fa-lg"></i>');
         $('#todo-list').append(dielement);
-      }
-
     }
 
     updateFooterStatus();
@@ -61,8 +53,7 @@ $(document).ready(function() {
     $('#todo-list').append(element);
     $('.diin input').val("");
     updateFooterStatus();
-    updateItemStatus();
-    
+    updateItemStatus();  
   })
 
   $('#main ul').on("click", "li i", function(){
@@ -97,8 +88,6 @@ $(document).ready(function() {
     updateFooterStatus();
   })
   // item left
-  
-
   $('#footer .all').on('click', function(){
     $('#main li').show();
     $('#footer .all').addClass('strong');
@@ -125,14 +114,13 @@ $(document).ready(function() {
   $(window).on('beforeunload', function(){
     var textd = [];
     var label = [];
+
     for (var j = 0; j < todoCounter; j++){
       textd.push($($('#main li')[j]).text());
-      if ($($('#main li')[j]).closest('i') == 'fa fa-bullseye fa-lg'){
+      if ($($('#main li')[j]).find('i').hasClass('fa fa-bullseye fa-lg')){
         label.push('t');
-        console.log('done1');
-      }else if($($('#main li')[j]).closest('i') == 'fa fa-check fa-lg'){
+      }else if($($('#main li')[j]).find('i').hasClass('fa fa-check fa-lg')){
         label.push('c');
-        console.log('done2');
       }
     }
     var diData = {
