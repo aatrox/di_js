@@ -33,13 +33,12 @@ $(document).ready(function() {
       if(diObject.dataLabel[k] == 't'){
         dielement = $('<li><i class="fa fa-bullseye fa-lg"></i><span></span></li>');
       }else{
-        dielement = $('<li><i class="fa fa-check fa-lg"></i><span></span></li>');
+        dielement = $('<li><i class="fa fa-check fa-lg"></i><span class="didcr"></span></li>');
       }
         dielement.find('span').append(diObject.dataText[k]);
         dielement.append('<i class="fa fa-close fa-lg"></i>');
         $('#todo-list').append(dielement);
     }
-
     updateFooterStatus();
     updateItemStatus();
   }
@@ -81,8 +80,13 @@ $(document).ready(function() {
   	updateFooterStatus();
     updateItemStatus();
   })
-
-
+  
+  $('#main ul').on('mouseover', 'li i.fa-close', function(){
+    $(this).removeClass('fa fa-close fa-lg').addClass('fa fa-close fa-2x');
+  })
+  $('#main ul').on('mouseout', 'li i.fa-close', function(){
+    $(this).removeClass('fa fa-close fa-2x').addClass('fa fa-close fa-lg');
+  })
 // clear done
   $('#footer #clear').on('click', function(){
   	$('.fa.fa-check.fa-lg').closest('li').remove();

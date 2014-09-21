@@ -21,7 +21,8 @@ h1 {
 #main ul {
 	list-style-type: none;
 	padding-left: 0px;
-
+  /*background-color: white;*/
+  background-image: url("../images/6.png");
 }
 
 #main li {
@@ -29,6 +30,7 @@ h1 {
 	height: 58px;
 	font-size: 150%;
 	line-height: 58px;
+
 }
 
 #main li .didcr{
@@ -38,11 +40,15 @@ h1 {
 .fa.fa-bullseye{
 	margin-right: 20px;
 	margin-left: 20px;
+	cursor: pointer;
+	cursor: hand;
 }
 
 .fa.fa-check{
 	margin-right: 20px;
 	margin-left: 20px;
+	cursor: pointer;
+	cursor: hand;
 }
 
 .fa.fa-close{
@@ -50,7 +56,8 @@ h1 {
 	line-height: 58px;
 	display: none;
 	margin-right: 10px;
-
+  cursor: pointer;
+	cursor: hand;
 }
 
 .diinput{
@@ -59,7 +66,8 @@ h1 {
 	height: 65px;
 	font-size: 150%;
 	background-color: rgba(192, 192, 192, 0.3);
-	
+	/*background-image: url("../images/6.png");*/
+  /*background-color: white;*/
 }
 
 #footer{
@@ -79,3 +87,24 @@ h1 {
 	font-weight: 900;
 	font-size: 102%;
 }
+
+.all{
+	cursor: pointer;
+	cursor: hand;
+}
+
+.target{
+	cursor: pointer;
+	cursor: hand;
+}
+
+.done{
+	cursor: pointer;
+	cursor: hand;
+}
+
+#clear{
+	cursor: pointer;
+	cursor: hand;
+}
+
