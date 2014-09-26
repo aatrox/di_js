@@ -1,10 +1,10 @@
 body {
-  background-image: url("../images/8.jpeg") ;
+  background-image: url("../images/9.jpeg") ;
 
 }
 
 h1 {
-	color: rgba(230, 170, 0, 0.6);
+	color: rgba(0, 0, 0, 0.5);
 	text-align: center;
 	font-size: 400%;
 	margin-top: 50px;
@@ -21,8 +21,6 @@ h1 {
 #main ul {
 	list-style-type: none;
 	padding-left: 0px;
-  /*background-color: white;*/
-  background-image: url("../images/6.png");
 }
 
 #main li {
@@ -66,8 +64,6 @@ h1 {
 	height: 65px;
 	font-size: 150%;
 	background-color: rgba(192, 192, 192, 0.3);
-	/*background-image: url("../images/6.png");*/
-  /*background-color: white;*/
 }
 
 #footer{
@@ -81,6 +77,7 @@ h1 {
 #footer ul li{
 	display: inline;
 	padding-right: 5px;
+	line-height: 30px;
 }
 
 .strong{
@@ -106,5 +103,20 @@ h1 {
 #clear{
 	cursor: pointer;
 	cursor: hand;
+	margin-top: 3px;
+	margin-bottom: 3px;
 }
 
+input.edit {
+  display: none;
+  height: 58px;
+  width: 440px;
+}
+
+#items{
+	line-height: 30px;
+}
+
+#clear{
+	line-height: 20px;
+}

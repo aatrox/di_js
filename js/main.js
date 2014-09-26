@@ -1,4 +1,5 @@
 var todoCounter = 0;
+var editing = false;
 
 var updateFooterStatus = function() {
   if ($("#todo-list").size() > 0){
@@ -25,7 +26,7 @@ var updateItemStatus = function() {
 $(document).ready(function() {
   var retrievedObject = localStorage.getItem('diData');
   var diObject = JSON.parse(retrievedObject);
-  if ( diObject!=null ) {
+  if ( diObject != null ) {
     todoCounter = diObject.dataText.length;
     
     for (var k=0; k<todoCounter; k++){
@@ -37,6 +38,7 @@ $(document).ready(function() {
       }
         dielement.find('span').append(diObject.dataText[k]);
         dielement.append('<i class="fa fa-close fa-lg"></i>');
+        dielement.append('<input class="edit">');
         $('#todo-list').append(dielement);
     }
     updateFooterStatus();
@@ -49,6 +51,7 @@ $(document).ready(function() {
     var element = $('<li><i class="fa fa-bullseye fa-lg"></i><span></span></li>');
     element.find('span').append(ditxt);
     element.append('<i class="fa fa-close fa-lg"></i>');
+    element.append('<input class="edit">');
     $('#todo-list').append(element);
     $('.diin input').val("");
     updateFooterStatus();
@@ -117,6 +120,40 @@ $(document).ready(function() {
     $('#footer .all').removeClass('strong');
   })
   
+  $(document).on('dblclick', 'li span', function(e){
+    $el = $(e.currentTarget);
+    console.log($el);
+    $el.hide();
+    $el.siblings("input").show().val($el.html()).focus();
+    editing = true;
+  })
+
+  $(document).on('keyup', 'li input.edit', function(e){
+    console.log(e.currentTarget);
+    if (e.keyCode == 13) {
+      $input = $(e.currentTarget);
+      console.log($input);
+      $input.hide();
+      $input.siblings('span').show().html($input.val());
+      editing = false;
+    }
+
+    if (e.keyCode == 27) {
+      $input = $(e.currentTarget);
+      $input.hide();
+      $input.siblings('span').show();
+      editing = false;
+    }
+  });
+
+  $(document).on("click", function(e){
+    if (editing) {
+      $input = $('li input.edit:visible');
+      $input.hide();
+      $input.siblings('span').show().html($input.val());
+    }
+  });
+
   $(window).on('beforeunload', function(){
     var textd = [];
     var label = [];
@@ -135,22 +172,5 @@ $(document).ready(function() {
     }
     localStorage.setItem('diData', JSON.stringify(diData));
   })
-
-  // $('#main ul').on('dblclick', 'li', function(){
-  //   var wt = $(this).text();
-  //   var revise = $('<form class='direvise'><input type='text' class='revise' value='wt'></form>')
-  //   $(this).html(revise);
-  // })
-
-  $('.inplace').editable(function(value, settings) {  
-     return(value);
-   }, { 
-      event: 'dblclick',
-      type: 'text',
-      width: '540px',
-      height: '58px'
-   });
-
-
 });
 
